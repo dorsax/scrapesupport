@@ -1,9 +1,9 @@
+from uuid import uuid4
 import discord
 import yaml
-import os
 import logging
+import json
 import requests
-import re
 from pathlib import Path
 
 
@@ -14,9 +14,9 @@ logging.basicConfig(level=logging.INFO)
 client = discord.Client()
 source_folder = Path(__file__).parent
 with open(source_folder / "config.yml", 'rb') as configstream:
-config = yaml.safe_load (configstream)
-token = config.get('token')
-pastebin_key = config.get('pastebin_key')
+    config = yaml.safe_load (configstream)
+    token = config.get('token')
+    pastebin_key = config.get('pastebin_key')
 cache_folder = source_folder / 'cache'
 
 async def save_to_cache(attachment):
@@ -35,7 +35,6 @@ async def save_to_cache(attachment):
             return local_file_content
     except: 
         logging.error(attachment.filename+' could not be saved.')
-
     
     return ""
 
@@ -65,12 +64,13 @@ async def on_message(message):
                             "api_dev_key" : pastebin_key,
                             "api_paste_name" : attachment.filename
                         }
-                        response = requests.post('https://pastebin.com/api/api_post.php', data=post_data)
-                        response_content = re.sub(r"b'(.*)'",r"\1",str(response.content)) # response.content is byte, thats why the format is b'<actual content>' and needs to be stripped...
+                        uri = 'https://www.toptal.com/developers/hastebin/'
+                        response = requests.post(uri+'documents', data=attachment_content)
+                        response_content =json.loads(response.text)['key']
 
-                        logging.info ('api response: '+str(response_content))
-                        if (response_content.startswith('https://pastebin.com')):
-                            await message.channel.send('For better support on mobile, your file was uploaded to '+response_content)
+                        logging.info ('api response: '+str(response.text))
+                        if (len(response_content)<=10):
+                            await message.channel.send('For better support on mobile, your file was uploaded to '+uri+response_content)
         return
 
 clear_cache()
