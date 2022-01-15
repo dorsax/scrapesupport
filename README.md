@@ -9,4 +9,4 @@ After cloning or downloading the repository, you need Python 3.5.3 or higher. To
 pip -r requirements.txt
 ```
 
-You also need to make a copy of `example-config.yml` as  `config.yml` and configure the bot. The rest works as normal for a Discord Bot. You can also just invite the bot ;)
+You also need to make a copy of `example-config.yml` as  `config.yml` and configure the bot. The rest works as normal for a Discord Bot as in just run the file via python.
