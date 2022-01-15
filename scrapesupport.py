@@ -70,7 +70,7 @@ async def on_message(message):
 
                         logging.info ('api response: '+str(response.text))
                         if (len(response_content)<=10):
-                            await message.channel.send(bot_message+uri+response_content)
+                            await message.channel.send(bot_message+uri+response_content, reference=message, mention_author=False)
         return
 
 clear_cache()
