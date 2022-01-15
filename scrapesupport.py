@@ -17,6 +17,7 @@ with open(source_folder / "config.yml", 'rb') as configstream:
     config = yaml.safe_load (configstream)
     token = config.get('token')
     pastebin_key = config.get('pastebin_key')
+    bot_message = config.get('bot_message')
 cache_folder = source_folder / 'cache'
 
 async def save_to_cache(attachment):
@@ -70,7 +71,7 @@ async def on_message(message):
 
                         logging.info ('api response: '+str(response.text))
                         if (len(response_content)<=10):
-                            await message.channel.send('For better support on mobile, your file was uploaded to '+uri+response_content)
+                            await message.channel.send(bot_message+uri+response_content)
         return
 
 clear_cache()
