@@ -1,5 +1,7 @@
 discord
 yaml
-os
+pathlib
 requests
 logging
+uuid
+re
