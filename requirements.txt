@@ -1,5 +1,6 @@
-discord
-pathlib
-requests
-uuid
-privatebinapi
+discord~=1.7.3
+pathlib~=1.0.1
+requests~=2.27.1
+uuid~=1.30
+privatebinapi~=1.0.0
+PyYAML~=6.0
