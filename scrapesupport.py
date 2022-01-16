@@ -18,7 +18,7 @@ with open(source_folder / "config.yml", 'rb') as configstream:
     token = config.get('token')
     uri = config.get('uri')
     platform = config.get('platform')
-    bot_message = config.get('bot_message')
+    bot_message: str = config.get('bot_message')
 cache_folder = source_folder / 'cache'
 
 
@@ -84,7 +84,7 @@ async def on_message(message):
                 if attachment_content != "":
                     link, success = upload_to_bin(attachment_content)
                     if success:
-                        await message.channel.send(bot_message + link, reference=message, mention_author=False)
+                        await message.channel.send(bot_message.format(link=link), reference=message, mention_author=False)
         return
 
 
