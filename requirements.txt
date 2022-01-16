@@ -1,7 +1,5 @@
 discord
-yaml
 pathlib
 requests
-logging
 uuid
-json
+privatebinapi

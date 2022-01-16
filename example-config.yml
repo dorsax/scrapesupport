@@ -1,3 +1,10 @@
+# DISCORD TOKEN
 token: "secret"
+# message the bot will print before the URL will show up
 bot_message: "For better support on mobile, your file was uploaded to "
-hastebin_uri: "https://www.toptal.com/developers/hastebin/"
+# accepts either hastebin oder privatebin, if configured wrong, the bot won't do anything
+platform: ''
+# endpoint where you normally paste things
+# original endpoint for hastebin: https://www.toptal.com/developers/hastebin/
+# list of endpoints for privatebin: https://privatebin.info/directory/
+uri: ""
