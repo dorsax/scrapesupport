@@ -1,7 +1,7 @@
 # DISCORD TOKEN
 token: "secret"
 # message the bot will print before the URL will show up
-bot_message: "For better support on mobile, your file was uploaded to "
+bot_message: "For better support on mobile, your file was uploaded to {link}"
 # accepts either hastebin oder privatebin, if configured wrong, the bot won't do anything
 platform: ''
 # endpoint where you normally paste things

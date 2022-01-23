@@ -76,8 +76,10 @@ async def on_message(message):
                 attachment_content = await save_to_cache(attachment)
                 if attachment_content!="":
                     link,success = upload_to_bin(attachment_content)
-                    if (success): 
-                        await message.channel.send(bot_message+link, reference=message, mention_author=False)
+                    if (success):
+                        await message.channel.send(bot_message.format(link=link),
+                                                   reference=message,
+                                                   mention_author=False)
         return
 
 clear_cache()
